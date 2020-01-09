@@ -49,9 +49,11 @@ for i = 1 : e
     EigenMatrix(:,i:i) = U(:,i:i);
 end
 %Eigen Images
-eigenimage = reshape(EigenMatrix(:,1:1),50,50);
+%for i = 1: 12
+%    eigenimage = reshape(EigenMatrix(:,i:i),50,50);
 
-%figure(1); imagesc(eigenimage);
+%    figure(i); imagesc(eigenimage); colormap(gray(256));
+%end
 
 %Projection Cofficient
 ProjectionCoefficient = EigenMatrix.' * (X(:,2:2) - averageImage);
@@ -61,7 +63,7 @@ for i=1 : e
     xa(i,1) = i; 
 end
 
-plot(xa, ProjectionCoefficient);
+ figure(13); plot(xa, ProjectionCoefficient);
 
 %Reconstructing Image from EigenImage
 
@@ -69,7 +71,8 @@ RCImage = EigenMatrix * ProjectionCoefficient + averageImage;
 
 RC  = reshape(RCImage , 50, 50);
 
-figure(2); imagesc(RC); colormap(gray(256));
+figure(14); imagesc(RC); colormap(gray(256));
+
 
 
 
